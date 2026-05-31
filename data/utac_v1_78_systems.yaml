@@ -1,0 +1,329 @@
+# UTAC v1.0 threshold systems — DOI: 10.5281/zenodo.17472834
+# 78 systems spanning astrophysics, climate, AI, biology, neuroscience
+metadata:
+  n_systems: 78
+  source: "UTAC v1.0 (Römer 2025)"
+  doi: "10.5281/zenodo.17472834"
+
+systems:
+  # Climate domain (β ≈ 0.05–0.15)
+  - name: amoc_tipping
+    domain: climate
+    beta: 0.08
+    description: "AMOC collapse threshold"
+  - name: arctic_ice
+    domain: climate
+    beta: 0.09
+    description: "Arctic sea ice tipping point"
+  - name: greenland_melt
+    domain: climate
+    beta: 0.11
+    description: "Greenland ice sheet melting"
+  - name: amazon_dieback
+    domain: climate
+    beta: 0.07
+    description: "Amazon rainforest dieback threshold"
+  - name: permafrost_thaw
+    domain: climate
+    beta: 0.10
+    description: "Permafrost carbon release threshold"
+  - name: monsoon_shift
+    domain: climate
+    beta: 0.12
+    description: "Indian monsoon regime shift"
+  - name: sahel_vegetation
+    domain: climate
+    beta: 0.06
+    description: "Sahel green/desert transition"
+  - name: west_antarctic_ice
+    domain: climate
+    beta: 0.08
+    description: "West Antarctic ice sheet threshold"
+  - name: boreal_forest
+    domain: climate
+    beta: 0.13
+    description: "Boreal forest dieback"
+  - name: el_nino_shift
+    domain: climate
+    beta: 0.09
+    description: "El Niño regime transition"
+  - name: ocean_acidification
+    domain: climate
+    beta: 0.07
+    description: "Ocean chemistry tipping point"
+  - name: thermohaline_collapse
+    domain: climate
+    beta: 0.10
+    description: "Thermohaline circulation collapse"
+  - name: clathrate_destab
+    domain: climate
+    beta: 0.08
+    description: "Methane clathrate destabilisation"
+  - name: atlantic_circulation
+    domain: climate
+    beta: 0.11
+    description: "Atlantic meridional overturning"
+  - name: glacier_retreat
+    domain: climate
+    beta: 0.09
+    description: "Alpine glacier retreat threshold"
+  - name: sea_level_jump
+    domain: climate
+    beta: 0.06
+    description: "Nonlinear sea level rise threshold"
+
+  # Ecological domain (β ≈ 0.15–0.35)
+  - name: coral_bleaching
+    domain: ecological
+    beta: 0.22
+    description: "Coral reef mass bleaching"
+  - name: species_extinction
+    domain: ecological
+    beta: 0.25
+    description: "Population collapse threshold"
+  - name: epidemic_threshold
+    domain: ecological
+    beta: 0.20
+    description: "SIR epidemic onset (R₀ = 1)"
+  - name: forest_fire_cascade
+    domain: ecological
+    beta: 0.30
+    description: "Forest fire cascade threshold"
+  - name: kelp_collapse
+    domain: ecological
+    beta: 0.18
+    description: "Kelp forest collapse"
+  - name: savanna_forest
+    domain: ecological
+    beta: 0.23
+    description: "Savanna–forest bistability"
+  - name: algal_bloom
+    domain: ecological
+    beta: 0.28
+    description: "Algal bloom emergence"
+  - name: fish_population
+    domain: ecological
+    beta: 0.19
+    description: "Fish stock collapse"
+  - name: bee_colony_ccd
+    domain: ecological
+    beta: 0.21
+    description: "Colony collapse disorder threshold"
+  - name: wetland_loss
+    domain: ecological
+    beta: 0.26
+    description: "Wetland ecosystem shift"
+  - name: invasive_species
+    domain: ecological
+    beta: 0.32
+    description: "Invasive species takeover"
+  - name: soil_microbiome
+    domain: ecological
+    beta: 0.17
+    description: "Soil microbiome collapse"
+  - name: mussel_bed_collapse
+    domain: ecological
+    beta: 0.24
+    description: "Intertidal mussel bed collapse"
+  - name: peatland_fire
+    domain: ecological
+    beta: 0.29
+    description: "Peatland combustion threshold"
+  - name: mangrove_loss
+    domain: ecological
+    beta: 0.20
+    description: "Mangrove forest threshold"
+
+  # Neural domain (β ≈ 0.35–0.65)
+  - name: neural_criticality
+    domain: neural
+    beta: 0.50
+    description: "Neural avalanche criticality"
+  - name: seizure_onset
+    domain: neural
+    beta: 0.45
+    description: "Epileptic seizure threshold"
+  - name: anesthesia_transition
+    domain: neural
+    beta: 0.55
+    description: "Consciousness loss threshold"
+  - name: sleep_wake
+    domain: neural
+    beta: 0.48
+    description: "Sleep–wake transition"
+  - name: working_memory
+    domain: neural
+    beta: 0.52
+    description: "Working memory capacity threshold"
+  - name: cortical_spreading
+    domain: neural
+    beta: 0.43
+    description: "Cortical spreading depression"
+  - name: theta_synchrony
+    domain: neural
+    beta: 0.50
+    description: "Theta-band synchrony onset"
+  - name: dopamine_threshold
+    domain: neural
+    beta: 0.58
+    description: "Dopaminergic reward threshold"
+  - name: action_potential
+    domain: neural
+    beta: 0.60
+    description: "Action potential firing threshold (Hodgkin-Huxley)"
+  - name: perceptual_bistability
+    domain: neural
+    beta: 0.47
+    description: "Perceptual bistability transition"
+  - name: deep_sleep_spindle
+    domain: neural
+    beta: 0.42
+    description: "Sleep spindle generation threshold"
+  - name: sensory_threshold
+    domain: neural
+    beta: 0.53
+    description: "Sensory detection threshold"
+  - name: motor_cortex_firing
+    domain: neural
+    beta: 0.49
+    description: "Motor cortex recruitment threshold"
+  - name: prefrontal_gate
+    domain: neural
+    beta: 0.56
+    description: "Prefrontal gating threshold"
+  - name: cerebellar_timing
+    domain: neural
+    beta: 0.44
+    description: "Cerebellar timing precision threshold"
+  - name: hippocampal_theta
+    domain: neural
+    beta: 0.51
+    description: "Hippocampal theta rhythm onset"
+
+  # Astrophysical domain (β ≈ 0.65–1.20)
+  - name: stellar_collapse
+    domain: astrophysical
+    beta: 0.85
+    description: "Core collapse supernova threshold"
+  - name: neutron_star_mass
+    domain: astrophysical
+    beta: 0.92
+    description: "Neutron star maximum mass (Tolman-Oppenheimer-Volkoff)"
+  - name: black_hole_accretion
+    domain: astrophysical
+    beta: 0.78
+    description: "Eddington accretion threshold"
+  - name: jet_formation
+    domain: astrophysical
+    beta: 0.88
+    description: "Relativistic jet onset"
+  - name: magnetar_field
+    domain: astrophysical
+    beta: 1.05
+    description: "Magnetar field threshold"
+  - name: agn_ignition
+    domain: astrophysical
+    beta: 0.95
+    description: "AGN activity onset"
+  - name: pulsar_glitch
+    domain: astrophysical
+    beta: 0.82
+    description: "Pulsar glitch threshold"
+  - name: nova_threshold
+    domain: astrophysical
+    beta: 0.90
+    description: "Classical nova ignition"
+  - name: planetary_formation
+    domain: astrophysical
+    beta: 0.75
+    description: "Planetesimal accretion threshold"
+  - name: solar_flare_x
+    domain: astrophysical
+    beta: 0.70
+    description: "X-class solar flare threshold"
+  - name: gravitational_wave
+    domain: astrophysical
+    beta: 1.10
+    description: "Binary merger GW threshold"
+  - name: dark_matter_halo
+    domain: astrophysical
+    beta: 0.83
+    description: "Dark matter halo collapse"
+  - name: stellar_wind
+    domain: astrophysical
+    beta: 0.79
+    description: "OB stellar wind onset"
+  - name: galaxy_interaction
+    domain: astrophysical
+    beta: 0.97
+    description: "Galaxy merger starburst threshold"
+  - name: quasar_variability
+    domain: astrophysical
+    beta: 1.02
+    description: "Quasar variability threshold"
+
+  # AI domain (β ≈ 1.20–2.50)
+  - name: grokking
+    domain: ai
+    beta: 1.80
+    description: "Grokking phase transition in neural networks"
+  - name: llm_emergence
+    domain: ai
+    beta: 2.20
+    description: "LLM emergent capability onset"
+  - name: double_descent
+    domain: ai
+    beta: 1.50
+    description: "Double descent risk curve transition"
+  - name: lottery_ticket
+    domain: ai
+    beta: 1.65
+    description: "Lottery ticket hypothesis threshold"
+  - name: memorisation_threshold
+    domain: ai
+    beta: 2.10
+    description: "Model memorisation onset"
+  - name: attention_phase
+    domain: ai
+    beta: 1.75
+    description: "Attention head specialisation transition"
+  - name: in_context_learning
+    domain: ai
+    beta: 2.30
+    description: "In-context learning emergence"
+  - name: catastrophic_forgetting
+    domain: ai
+    beta: 1.40
+    description: "Catastrophic forgetting onset"
+  - name: scaling_law_break
+    domain: ai
+    beta: 1.90
+    description: "Scaling law deviation threshold"
+  - name: reward_hacking
+    domain: ai
+    beta: 2.00
+    description: "RL reward hacking phase transition"
+  - name: mode_collapse_gan
+    domain: ai
+    beta: 1.55
+    description: "GAN mode collapse threshold"
+  - name: superposition_model
+    domain: ai
+    beta: 1.85
+    description: "Feature superposition threshold"
+  - name: phase_transition_sgd
+    domain: ai
+    beta: 1.70
+    description: "SGD loss landscape phase transition"
+  - name: neural_collapse
+    domain: ai
+    beta: 2.05
+    description: "Neural collapse terminal phase"
+  - name: inference_threshold
+    domain: ai
+    beta: 1.45
+    description: "Reasoning capability emergence"
+  - name: tokenisation_phase
+    domain: ai
+    beta: 1.60
+    description: "Tokenisation strategy phase transition"
