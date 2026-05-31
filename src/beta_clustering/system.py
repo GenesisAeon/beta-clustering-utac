@@ -7,11 +7,7 @@ import random
 from dataclasses import dataclass, field
 from typing import Any
 
-try:
-    import yaml as _yaml  # type: ignore[import-untyped]
-    _YAML_AVAILABLE = True
-except ImportError:  # pragma: no cover
-    _YAML_AVAILABLE = False
+import yaml
 
 from beta_clustering.benchmark import check_targets
 from beta_clustering.cluster_detector import BetaCluster, build_clusters
@@ -29,11 +25,11 @@ System = dict[str, Any]
 
 def _load_systems(path: str | None) -> list[System]:
     """Load threshold systems from YAML or return synthetic defaults."""
-    if path and _YAML_AVAILABLE:
+    if path:
         p = pathlib.Path(path)
         if p.exists():
             with p.open() as f:
-                data: dict[str, Any] = _yaml.safe_load(f)
+                data: dict[str, Any] = yaml.safe_load(f)
             result: list[System] = data.get("systems", [])
             return result
     return _synthetic_78_systems()
