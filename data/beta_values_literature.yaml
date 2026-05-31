@@ -1,0 +1,28 @@
+# Literature β values with citations
+# Used for validation against published UTAC v1.0 results
+
+literature_values:
+  - system: amoc_tipping
+    beta: 0.08
+    source: "Lenton et al. (2008), Nature"
+    doi: "10.1038/nature06591"
+
+  - system: neural_criticality
+    beta: 0.50
+    source: "Beggs & Plenz (2003), J. Neurosci."
+    doi: "10.1523/JNEUROSCI.23-35-11167.2003"
+
+  - system: stellar_collapse
+    beta: 0.85
+    source: "Fryer (1999), ApJ"
+    doi: "10.1086/307511"
+
+  - system: llm_emergence
+    beta: 2.20
+    source: "Wei et al. (2022), arXiv:2206.07682"
+    note: "Estimated from scaling curve steepness"
+
+  - system: epidemic_threshold
+    beta: 0.20
+    source: "Anderson & May (1992), Oxford University Press"
+    note: "SIR model R₀=1 transition steepness"

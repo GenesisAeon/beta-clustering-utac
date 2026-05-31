@@ -1,7 +1,7 @@
 """Domain-specific β-cluster identification."""
 from __future__ import annotations
 
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from beta_clustering.constants import DOMAIN_BETA_CENTRES
 
 
@@ -11,11 +11,7 @@ class BetaCluster:
     centre: float
     beta_min: float
     beta_max: float
-    members: list[str] = None
-
-    def __post_init__(self):
-        if self.members is None:
-            self.members = []
+    members: list[str] = field(default_factory=list)
 
 
 def assign_cluster(beta: float) -> str:
@@ -24,7 +20,7 @@ def assign_cluster(beta: float) -> str:
     return best[0]
 
 
-def build_clusters(systems: list[dict]) -> list[BetaCluster]:
+def build_clusters(systems: list[dict[str, object]]) -> list[BetaCluster]:
     """Build cluster objects from a list of {name, beta, domain} dicts."""
     cluster_map: dict[str, list[str]] = {d: [] for d in DOMAIN_BETA_CENTRES}
     for s in systems:

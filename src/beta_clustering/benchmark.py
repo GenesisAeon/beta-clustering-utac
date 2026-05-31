@@ -4,7 +4,7 @@ from __future__ import annotations
 from beta_clustering.constants import BETA_TARGETS
 
 
-def check_targets(results: dict) -> list[str]:
+def check_targets(results: dict[str, object]) -> list[str]:
     """Return list of failed checks (empty = all pass)."""
     failures = []
     for key, (target, tol) in BETA_TARGETS.items():

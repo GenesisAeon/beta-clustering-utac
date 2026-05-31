@@ -15,7 +15,7 @@ class UniversalityTestResult:
     universality_rejected: bool   # True = domain-specific, not universal
 
 
-def test_universality(systems: list[dict]) -> UniversalityTestResult:
+def run_universality_test(systems: list[dict[str, object]]) -> UniversalityTestResult:
     """One-way ANOVA: are β values domain-specific?
 
     H₀: all β drawn from same distribution (universality)

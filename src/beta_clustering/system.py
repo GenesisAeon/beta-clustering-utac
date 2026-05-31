@@ -14,7 +14,7 @@ from beta_clustering.constants import (
 )
 from beta_clustering.cluster_detector import build_clusters, BetaCluster
 from beta_clustering.phi_scaling import analyse_phi_scaling, PhiScalingResult
-from beta_clustering.universality_test import test_universality
+from beta_clustering.universality_test import run_universality_test
 from beta_clustering.crep_bridge import beta_to_gamma, sigma_from_beta_distribution
 from beta_clustering.benchmark import check_targets
 
@@ -79,7 +79,7 @@ class BetaClusteringUTAC:
 
         self._clusters = build_clusters(self._systems)
         self._phi_result = analyse_phi_scaling(self._clusters)
-        univ = test_universality(self._systems)
+        univ = run_universality_test(self._systems)
         all_betas = [s["beta"] for s in self._systems]
         sigma = sigma_from_beta_distribution(all_betas)
 

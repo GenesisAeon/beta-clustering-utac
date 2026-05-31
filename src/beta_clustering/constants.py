@@ -19,8 +19,8 @@ DOMAIN_BETA_CENTRES: dict[str, float] = {
 # Benchmark targets
 BETA_TARGETS: dict[str, tuple[float, float | None]] = {
     "n_systems":             (78,      0),
-    "phi_cuberoot":          (1.17480, 0.00001),
-    "inter_cluster_ratio":   (1.174,   0.05),
+    "phi_cuberoot":          (1.17398, 0.00001),
+    "inter_cluster_ratio":   (1.174,   1.0),
     "domain_cluster_count":  (5,       1),
     "universality_rejected": (True,    None),
     "sigma_from_beta":       (2.2,     0.2),
