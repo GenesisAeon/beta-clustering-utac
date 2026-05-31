@@ -3,7 +3,6 @@ from __future__ import annotations
 
 from beta_clustering.constants import DOMAIN_BETA_CENTRES
 
-
 DOMAIN_DESCRIPTIONS: dict[str, str] = {
     "climate":       "Glacial cycles, AMOC, Arctic ice, Amazon dieback",
     "ecological":    "Coral bleaching, species extinction, epidemic thresholds",
@@ -13,7 +12,7 @@ DOMAIN_DESCRIPTIONS: dict[str, str] = {
 }
 
 
-def get_domain_info(domain: str) -> dict:
+def get_domain_info(domain: str) -> dict[str, object]:
     centre = DOMAIN_BETA_CENTRES.get(domain, float("nan"))
     return {
         "domain": domain,

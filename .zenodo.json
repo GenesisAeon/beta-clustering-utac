@@ -1,0 +1,40 @@
+{
+  "title": "beta-clustering-utac: β-Clustering over 78 Threshold Systems with Φ^(1/3) Inter-Cluster Scaling",
+  "version": "0.1.0",
+  "description": "Package 32 of the GenesisAeon Feldtheorie framework. Implements the full β-clustering analysis from UTAC v1.0: 78 threshold systems across astrophysics, climate, AI, biology, and neuroscience. Key finding: β clusters by domain (not universal convergence), with inter-cluster ratios following Φ^(1/3) ≈ 1.17480 scaling. Includes Diamond interface (run_cycle, get_crep_state, get_utac_state, get_phase_events, to_zenodo_record), CREP-bridge (β↔Γ), one-way ANOVA universality test, and MLE β-estimator.",
+  "creators": [
+    {
+      "name": "Römer, Johann",
+      "affiliation": "MOR Research Collective"
+    }
+  ],
+  "keywords": [
+    "beta-clustering",
+    "UTAC",
+    "threshold systems",
+    "golden ratio",
+    "phi scaling",
+    "CREP",
+    "GenesisAeon",
+    "complex systems",
+    "criticality",
+    "tipping points",
+    "phase transitions",
+    "universality"
+  ],
+  "license": "MIT",
+  "upload_type": "software",
+  "related_identifiers": [
+    {
+      "identifier": "10.5281/zenodo.17472834",
+      "relation": "isPartOf",
+      "scheme": "doi"
+    },
+    {
+      "identifier": "10.5281/zenodo.19645351",
+      "relation": "isDocumentedBy",
+      "scheme": "doi"
+    }
+  ],
+  "notes": "GenesisAeon Package 32. Φ^(1/3) ≈ 1.17480 as universal inter-cluster scaling exponent. Universality hypothesis rejected via one-way ANOVA (F >> 2.5). σ ≈ 2.2 emerges from β-distribution as CREP coupling constant."
+}

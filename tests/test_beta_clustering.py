@@ -2,17 +2,16 @@
 from __future__ import annotations
 
 import math
+
 import pytest
 
-from beta_clustering import BetaClusteringUTAC, PHI, PHI_CUBEROOT, BETA_TARGETS
-from beta_clustering.constants import DOMAIN_BETA_CENTRES
-from beta_clustering.beta_estimator import estimate_beta, ThresholdObservation
+from beta_clustering import PHI, PHI_CUBEROOT, BetaClusteringUTAC
+from beta_clustering.beta_estimator import ThresholdObservation, estimate_beta
 from beta_clustering.cluster_detector import assign_cluster, build_clusters
-from beta_clustering.phi_scaling import analyse_phi_scaling
+from beta_clustering.constants import DOMAIN_BETA_CENTRES
 from beta_clustering.crep_bridge import beta_to_gamma, gamma_to_beta, sigma_from_beta_distribution
+from beta_clustering.phi_scaling import analyse_phi_scaling
 from beta_clustering.universality_test import run_universality_test
-from beta_clustering.benchmark import check_targets
-
 
 # ── Constants ─────────────────────────────────────────────────────────────────
 

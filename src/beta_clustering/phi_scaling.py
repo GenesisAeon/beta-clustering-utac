@@ -4,8 +4,8 @@ from __future__ import annotations
 import math
 from dataclasses import dataclass
 
-from beta_clustering.constants import PHI_CUBEROOT
 from beta_clustering.cluster_detector import BetaCluster
+from beta_clustering.constants import PHI_CUBEROOT
 
 
 @dataclass

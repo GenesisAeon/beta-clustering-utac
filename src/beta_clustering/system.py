@@ -2,38 +2,45 @@
 from __future__ import annotations
 
 import math
+import pathlib
+import random
 from dataclasses import dataclass, field
+from typing import Any
 
-import yaml
+try:
+    import yaml as _yaml  # type: ignore[import-untyped]
+    _YAML_AVAILABLE = True
+except ImportError:  # pragma: no cover
+    _YAML_AVAILABLE = False
 
-from beta_clustering.constants import (
-    PHI_CUBEROOT,
-    BETA_TARGETS,
-    ZENODO_DOI,
-    PACKAGE_NUMBER,
-)
-from beta_clustering.cluster_detector import build_clusters, BetaCluster
-from beta_clustering.phi_scaling import analyse_phi_scaling, PhiScalingResult
-from beta_clustering.universality_test import run_universality_test
-from beta_clustering.crep_bridge import beta_to_gamma, sigma_from_beta_distribution
 from beta_clustering.benchmark import check_targets
+from beta_clustering.cluster_detector import BetaCluster, build_clusters
+from beta_clustering.constants import (
+    PACKAGE_NUMBER,
+    PHI_CUBEROOT,
+    ZENODO_DOI,
+)
+from beta_clustering.crep_bridge import beta_to_gamma, sigma_from_beta_distribution
+from beta_clustering.phi_scaling import PhiScalingResult, analyse_phi_scaling
+from beta_clustering.universality_test import run_universality_test
+
+System = dict[str, Any]
 
 
-def _load_systems(path: str | None) -> list[dict]:
-    """Load 78 threshold systems from YAML or return synthetic defaults."""
-    if path:
-        import pathlib
+def _load_systems(path: str | None) -> list[System]:
+    """Load threshold systems from YAML or return synthetic defaults."""
+    if path and _YAML_AVAILABLE:
         p = pathlib.Path(path)
         if p.exists():
             with p.open() as f:
-                data = yaml.safe_load(f)
-            return data.get("systems", [])
+                data: dict[str, Any] = _yaml.safe_load(f)
+            result: list[System] = data.get("systems", [])
+            return result
     return _synthetic_78_systems()
 
 
-def _synthetic_78_systems() -> list[dict]:
+def _synthetic_78_systems() -> list[System]:
     """Synthetic 78 threshold systems reproducing UTAC v1.0 distribution."""
-    import random
     rng = random.Random(42)
 
     domains = [
@@ -44,12 +51,12 @@ def _synthetic_78_systems() -> list[dict]:
         ("ai",            1.75, 0.35, 16),
     ]
 
-    systems = []
+    systems: list[System] = []
     for domain, centre, sigma, count in domains:
         for i in range(count):
             beta = max(0.01, rng.gauss(centre, sigma))
             systems.append({
-                "name": f"{domain}_{i+1:02d}",
+                "name": f"{domain}_{i + 1:02d}",
                 "domain": domain,
                 "beta": round(beta, 4),
             })
@@ -61,17 +68,18 @@ class BetaClusteringUTAC:
     """Diamond interface — Package 32: β-Clustering over 78 threshold systems.
 
     Key result: β clusters by domain; inter-cluster ratios ≈ Φ^(1/3) ≈ 1.174.
+    DOI: 10.5281/zenodo.17472834
     """
 
     data_path: str | None = None
-    _systems: list[dict] = field(default_factory=list, repr=False)
+    _systems: list[System] = field(default_factory=list, repr=False)
     _clusters: list[BetaCluster] = field(default_factory=list, repr=False)
     _phi_result: PhiScalingResult | None = field(default=None, repr=False)
-    _cycle_result: dict = field(default_factory=dict, repr=False)
+    _cycle_result: dict[str, Any] = field(default_factory=dict, repr=False)
 
     # ── Diamond interface ────────────────────────────────────────────────────
 
-    def run_cycle(self, n_systems: int = 78) -> dict:
+    def run_cycle(self, n_systems: int = 78) -> dict[str, Any]:
         """Run full β-clustering analysis."""
         self._systems = _load_systems(self.data_path)
         if len(self._systems) > n_systems:
@@ -80,7 +88,7 @@ class BetaClusteringUTAC:
         self._clusters = build_clusters(self._systems)
         self._phi_result = analyse_phi_scaling(self._clusters)
         univ = run_universality_test(self._systems)
-        all_betas = [s["beta"] for s in self._systems]
+        all_betas = [float(s["beta"]) for s in self._systems]
         sigma = sigma_from_beta_distribution(all_betas)
 
         self._cycle_result = {
@@ -95,36 +103,42 @@ class BetaClusteringUTAC:
         }
         return self._cycle_result
 
-    def get_crep_state(self) -> dict:
+    def get_crep_state(self) -> dict[str, float]:
         if not self._systems:
             self.run_cycle()
-        all_betas = [s["beta"] for s in self._systems]
+        all_betas = [float(s["beta"]) for s in self._systems]
         gammas = [beta_to_gamma(b) for b in all_betas]
         mean_gamma = sum(gammas) / len(gammas) if gammas else 0.0
+        phi_res = self._phi_result
+        c_val = min(1.0, phi_res.mean_ratio / PHI_CUBEROOT) if phi_res else 0.5
+        r_val = 1.0 - min(1.0, abs(phi_res.mean_ratio - PHI_CUBEROOT)) if phi_res else 0.5
+        p_val = len(self._systems) / 78.0
         return {
-            "C": min(1.0, self._phi_result.mean_ratio / PHI_CUBEROOT) if self._phi_result else 0.5,
-            "R": 1.0 - min(1.0, abs(self._phi_result.mean_ratio - PHI_CUBEROOT)) if self._phi_result else 0.5,
+            "C": c_val,
+            "R": r_val,
             "E": mean_gamma,
-            "P": len(self._systems) / 78.0,
-            "gamma": math.pow(mean_gamma * 0.8 * 0.8 * (len(self._systems) / 78.0), 0.25),
+            "P": p_val,
+            "gamma": math.pow(max(1e-12, mean_gamma * c_val * r_val * p_val), 0.25),
         }
 
-    def get_utac_state(self) -> dict:
+    def get_utac_state(self) -> dict[str, float]:
         if not self._cycle_result:
             self.run_cycle()
+        beta_mean = (sum(float(s["beta"]) for s in self._systems)
+                     / max(len(self._systems), 1))
         return {
             "H": len(self._systems) / 78.0,
             "K": 1.0,
             "r": 0.5,
-            "sigma": self._cycle_result.get("sigma_from_beta", 2.2),
-            "beta_mean": sum(s["beta"] for s in self._systems) / max(len(self._systems), 1),
+            "sigma": float(self._cycle_result.get("sigma_from_beta", 2.2)),
+            "beta_mean": beta_mean,
         }
 
-    def get_phase_events(self) -> list:
+    def get_phase_events(self) -> list[dict[str, Any]]:
         """Cluster boundaries = phase transition events."""
         if not self._clusters:
             self.run_cycle()
-        events = []
+        events: list[dict[str, Any]] = []
         sorted_c = sorted(self._clusters, key=lambda c: c.centre)
         for i in range(1, len(sorted_c)):
             events.append({
@@ -136,7 +150,7 @@ class BetaClusteringUTAC:
             })
         return events
 
-    def to_zenodo_record(self) -> dict:
+    def to_zenodo_record(self) -> dict[str, Any]:
         if not self._cycle_result:
             self.run_cycle()
         return {
@@ -155,6 +169,7 @@ class BetaClusteringUTAC:
         """Empirical Φ^(1/3) ratio between β clusters."""
         if not self._phi_result:
             self.run_cycle()
+        assert self._phi_result is not None
         return self._phi_result.mean_ratio
 
     def domain_beta_map(self) -> dict[str, float]:

@@ -1,8 +1,9 @@
 """Tests for universal β convergence vs. domain-specific clustering."""
 from __future__ import annotations
 
-import math
+from collections import defaultdict
 from dataclasses import dataclass
+from typing import Any
 
 
 @dataclass
@@ -15,21 +16,20 @@ class UniversalityTestResult:
     universality_rejected: bool   # True = domain-specific, not universal
 
 
-def run_universality_test(systems: list[dict[str, object]]) -> UniversalityTestResult:
+def run_universality_test(systems: list[dict[str, Any]]) -> UniversalityTestResult:
     """One-way ANOVA: are β values domain-specific?
 
     H₀: all β drawn from same distribution (universality)
     H₁: β differs by domain (domain-specific clusters)
     """
-    from collections import defaultdict
     domain_betas: dict[str, list[float]] = defaultdict(list)
     for s in systems:
-        domain_betas[s.get("domain", "unknown")].append(s["beta"])
+        domain_betas[str(s.get("domain", "unknown"))].append(float(s["beta"]))
 
-    all_betas = [s["beta"] for s in systems]
+    all_betas = [float(s["beta"]) for s in systems]
     grand_mean = sum(all_betas) / len(all_betas) if all_betas else 0.0
 
-    k = len(domain_betas)  # number of groups
+    k = len(domain_betas)
     n = len(all_betas)
 
     ss_between = sum(
@@ -51,8 +51,7 @@ def run_universality_test(systems: list[dict[str, object]]) -> UniversalityTestR
     f_stat = ms_between / ms_within if ms_within > 0 else float("inf")
 
     # Critical F at α=0.05 (approximate for df1≈4, df2≈73 → F_crit ≈ 2.5)
-    f_critical = 2.5
-    universality_rejected = f_stat > f_critical
+    universality_rejected = f_stat > 2.5
 
     return UniversalityTestResult(
         n_systems=n,
