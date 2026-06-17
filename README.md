@@ -27,6 +27,12 @@ Inter-Cluster-Ratio: β_(n+1)/β_n ≈ Φ^(1/3) ≈ 1.17480
 Universalitäts-Hypothese: ABGELEHNT (F-Test, α=0.05)
 ```
 
+## Installation
+
+```bash
+pip install beta-clustering-utac
+```
+
 ## Quickstart
 
 ```bash
@@ -98,7 +104,13 @@ uv run mypy src/beta_clustering/  # Keine Fehler (strict mode)
 uv run ruff check .               # Keine Fehler
 ```
 
-## Referenz
+## Citation
+
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.PLACEHOLDER.svg)](https://doi.org/10.5281/zenodo.PLACEHOLDER)
+
+DOI will be assigned automatically on first GitHub Release once
+Zenodo–GitHub integration is enabled for this repo. Until then, cite the
+existing concept DOI above (`10.5281/zenodo.17472834`).
 
 ```bibtex
 @software{roemer_beta_clustering_utac_2025,
@@ -108,7 +120,7 @@ uv run ruff check .               # Keine Fehler
   publisher = {Zenodo},
   doi       = {10.5281/zenodo.17472834},
   url       = {https://doi.org/10.5281/zenodo.17472834},
-  version   = {0.1.0},
+  version   = {1.0.0},
   note      = {GenesisAeon Package 32 — MOR Research Collective}
 }
 ```
