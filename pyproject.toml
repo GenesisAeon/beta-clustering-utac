@@ -1,20 +1,22 @@
 [project]
-name = "diamond-setup"
+name = "beta-clustering-utac"
 version = "1.0.0"
-description = "Universal Python project scaffold â€” generate professional project skeletons in seconds"
+description = "GenesisAeon Package 32 — beta-clustering over 78 threshold systems with Phi^(1/3) inter-cluster scaling; bundles the diamond-setup project scaffold tool"
 readme = "README.md"
 license = { text = "MIT" }
-authors = [{ name = "GenesisAeon" }]
+authors = [{ name = "Johann Römer" }]
 requires-python = ">=3.11"
-keywords = ["scaffold", "template", "cli", "project-generator", "skeleton"]
+keywords = ["beta-clustering", "UTAC", "CREP", "GenesisAeon", "criticality", "phi-scaling", "scaffold"]
 classifiers = [
     "Development Status :: 5 - Production/Stable",
     "Environment :: Console",
     "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
     "License :: OSI Approved :: MIT License",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering",
     "Topic :: Software Development :: Code Generators",
 ]
 dependencies = [
@@ -41,11 +43,11 @@ dev = [
 diamond = "diamond_setup.cli:app"
 
 [project.urls]
-Homepage = "https://github.com/GenesisAeon/diamond-setup"
-Repository = "https://github.com/GenesisAeon/diamond-setup"
-Documentation = "https://genesisaeon.github.io/diamond-setup"
-Issues = "https://github.com/GenesisAeon/diamond-setup/issues"
-Zenodo = "https://doi.org/10.5281/zenodo.XXXXXXX"
+Homepage = "https://github.com/GenesisAeon/beta-clustering-utac"
+Repository = "https://github.com/GenesisAeon/beta-clustering-utac"
+Documentation = "https://genesisaeon.github.io/beta-clustering-utac"
+Issues = "https://github.com/GenesisAeon/beta-clustering-utac/issues"
+Zenodo = "https://doi.org/10.5281/zenodo.17472834"
 
 [build-system]
 requires = ["hatchling"]
