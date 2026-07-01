@@ -163,8 +163,9 @@ def test_get_crep_state():
     system = BetaClusteringUTAC()
     system.run_cycle()
     state = system.get_crep_state()
-    for key in ["C", "R", "E", "P", "gamma"]:
+    for key in ["C", "R", "E", "P", "Gamma"]:
         assert key in state
+        assert state[key] is not None
         assert 0 <= state[key] <= 1
 
 
@@ -172,8 +173,7 @@ def test_get_utac_state():
     system = BetaClusteringUTAC()
     system.run_cycle()
     state = system.get_utac_state()
-    assert "H" in state
-    assert "sigma" in state
+    assert set(state.keys()) == {"H", "H_star", "K_eff"}
 
 
 def test_get_phase_events():
