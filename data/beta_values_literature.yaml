@@ -15,7 +15,7 @@ literature_values:
   - system: stellar_collapse
     beta: 0.85
     source: "Fryer (1999), ApJ"
-    doi: "10.1086/307511"
+    doi: "10.1086/307647"
 
   - system: llm_emergence
     beta: 2.20
