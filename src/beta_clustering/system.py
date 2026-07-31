@@ -64,7 +64,7 @@ def _synthetic_78_systems() -> list[System]:
     return systems
 
 
-class BetaClusteringUTAC(DiamondPackage):
+class BetaClusteringUTAC(DiamondPackage):  # type: ignore[misc]
     """Diamond interface — Package 32: β-Clustering over 78 threshold systems.
 
     Key result: β clusters by domain; inter-cluster ratios ≈ Φ^(1/3) ≈ 1.174.
@@ -86,7 +86,7 @@ class BetaClusteringUTAC(DiamondPackage):
         """Run full β-clustering analysis (optional *n_systems* override)."""
         if n_systems is not None:
             self._n_systems = n_systems
-        return super().run_cycle()
+        return super().run_cycle()  # type: ignore[no-any-return]
 
     def _run_cycle(self) -> dict[str, Any]:
         self._systems = _load_systems(self.data_path)
