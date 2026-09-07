@@ -26,12 +26,12 @@
   "upload_type": "software",
   "related_identifiers": [
     {
-      "identifier": "10.5281/zenodo.17472834",
+      "identifier": "10.5281/zenodo.19645351",
       "relation": "isPartOf",
       "scheme": "doi"
     },
     {
-      "identifier": "10.5281/zenodo.19645351",
+      "identifier": "10.5281/zenodo.17472834",
       "relation": "isDocumentedBy",
       "scheme": "doi"
     }
