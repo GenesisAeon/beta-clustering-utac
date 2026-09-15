@@ -33,8 +33,12 @@ def test_run_cycle_returns_dict():
 
 
 def test_get_crep_state_keys(beta_cluster: BetaClusteringUTAC):
+    """2026-09-15: diamond-setup 2.3.0 added an additive `bridge_adapted`
+    field to CREPState -- check the required keys are present rather than
+    an exact set match, so future additive protocol fields don't break
+    this test (see diamond_setup.protocol's own CREPState docstring)."""
     state = beta_cluster.get_crep_state()
-    assert set(state.keys()) == {"C", "R", "E", "P", "Gamma"}
+    assert {"C", "R", "E", "P", "Gamma"} <= set(state.keys())
 
 
 def test_get_crep_state_range(beta_cluster: BetaClusteringUTAC):

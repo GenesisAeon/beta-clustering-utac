@@ -2,8 +2,8 @@ cff-version: 1.2.0
 message: "If you use this software, please cite it as below."
 type: software
 title: "beta-clustering-utac"
-version: "1.1.0"
-date-released: "2026-07-01"
+version: "1.1.1"
+date-released: "2026-09-15"
 authors:
   - family-names: Römer
     given-names: Johann
